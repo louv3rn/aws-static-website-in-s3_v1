@@ -101,13 +101,18 @@ I checked my local HTML, CSS and JS files and I found that the JavaScript file p
 To update an object inside a bucket, click on the "Upload" button and choose the updated file with the same key (name) as the existing object.
 ![Uploading updated HTML file](./assets/updated_html_file.png)
 
-Confirm the upload. This will overwrite the existing object with the new content.
+Confirm the upload. This will overwrite the existing object with the new content. I also checked that there are now two Versions of `portfolio_website.html` after updating this HTML file.
+![Version](./assets/version.png)
+
+
 I visited the website URL and welcomed with a 403 error. 
 ![Error 403 of the Updated File](./assets/error.png)
 I learned that an updated file also needs to be "Make public using ACLs" again.
 
 After making the updated HTML file public using ACL, the missing section is now visible on the hosted site
 ![Fixed missing section](./assets/visible_projects_section.png)
+
+
 
 ### 2. Bucket Policies
 I also explored setting up a bucket policy.
@@ -165,6 +170,21 @@ There is a warning that says failed to delete objects. `Error: Access Denied`
 ![Failed Deletion](./assets/failed_delete.png)
 
 It means the bucket policy is working.
+
+## Clean Up Resources
+To avoid surprise costs for this project (because AWS bills are no joke), I cleaned up everything.
+I deleted the bucket policy first to allow deletion of the files
+![Delete Bucket Policy](./assets/delete_bucket_policy.png)
+
+Then deleted the objects
+![Delete Objects](./assets/delete_objects.png)
+
+AWS won’t let you delete a bucket unless it’s empty first.
+![Empty the Bucket Error ](./assets/empty_the_bucket.png)
+Emptying the bucket
+![Empty the bucket](./assets/permanent_delete_bucket.png)
+Then finally deleting the bucket.
+
 
 
 
