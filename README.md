@@ -203,10 +203,8 @@ Next time, I’d like to automate uploads with the AWS CLI, use CloudFront for f
 My definition of Amazon S3 from this project:
 *Amazon S3 feels like a big online folder where I can store files, decide who can see them, and even turn those files into a website that anyone can visit.*
 
-This is my first AWS documented project so suggestions, and constructive feedback are highly appreciated!
+This is my first documented AWS project so suggestions, and constructive feedback are highly appreciated!
 
 ## Thanks for scrolling 💜
 If you read this far, you deserve a cookie! 🍪
-
-
 
