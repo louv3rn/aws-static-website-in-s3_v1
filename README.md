@@ -110,5 +110,61 @@ After making the updated HTML file public using ACL, the missing section is now 
 ![Fixed missing section](./assets/visible_projects_section.png)
 
 ### 2. Bucket Policies
+I also explored setting up a bucket policy.
+On the Bucket, navigate to Permissions tab and under Bucket Policy, click Edit.
+![Bucket Policy](./assets/bucket_policy_edit.png)
+
+I pasted the sample snippet below on the type field:
+
+Bucket Policy snippet:
+
+``` JSON
+{
+"Version": "2012-10-17",
+"Id": "BucketPolicy_Deny_Delete",
+"Statement": [
+	{
+	"Sid": "BucketPutDelete",
+	"Effect": "Deny",
+	"Principal": "*",
+	"Action": "s3:DeleteObject",
+	"Resource": "arn:aws:s3:::<bucket-name>/<object-name>"
+	}
+  ]
+}
+```
+
+Here’s a high‑level explanation of that bucket policy snippet:
+The JSON policy is a set of rules that tell S3 what actions are allowed or denied.
+
+Version: This just shows the format version AWS uses for policies.
+
+`Id`: A label for the policy
+
+`Sid`: A short name for the rule.
+
+`Effect`: Here it says `"Deny"`, which means the action is blocked.
+
+`Principal`: `"*"` means it applies to everyone (all users).
+
+`Action`: `"s3:DeleteObject"` is the specific action being denied: deleting objects.
+
+`Resource`: This points to the exact file in the bucket (in this case, `portfolio_website.html`).
+
+Basically, this policy prevents anyone who accesses the website from deleting specified objects.
+Bucket policies allows you to determine what actions are people are allowed or not to do to the objects inside the bucket
+
+Click `Save changes`
+![Save Bucket Policy](./assets/save_bucket_policy.png)
+
+Go to objects tab and test deleting the portfolio_website.html
+Type delete in the text input field to confirm deletion.
+![Delete portfolio_website.html](./assets/test_delete.png)
+
+There is a warning that says failed to delete objects. `Error: Access Denied`
+![Failed Deletion](./assets/failed_delete.png)
+
+It means the bucket policy is working.
+
 
 
