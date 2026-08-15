@@ -40,12 +40,49 @@ AWS automatically encrypts the objects inside the bucket so whenever someone tri
 After these settings, the bucket was created successfully and can be seen on the Buckets list.
 ![Success Bucket Creation](./assets/created_bucket_success.png)
 ![Bucket List](./assets/buckets_list.png)
-### Uploading Files / Folders  
-Once the bucket was ready, I uploaded my website files: `portfolio_website.html` and the assets folder containing CSS, JS, and images. The HTML file gives the structure of the site, while the assets add style and interactivity. After uploading, I made the files public using ACLs to avoid 403 Forbidden errors.  
 
-To make the website available online, I enabled **static website hosting** in the bucket’s properties. I set `portfolio_website.html` as the index document, saved the changes, and confirmed that the site was accessible through the bucket’s endpoint URL.  
+### Uploading Files / Folders
+In the created bucket, `aws-hostweb-project`, navigate to Objects tab and click Upload.
+![Click Upload](./assets/objects_tab.png)
+Then click 'Add files'.
+![Add Files](./assets/add_files_folder.png)
 
----
+I selected my website files: `portfolio_website.html` and the assets folder containing CSS, JS, and images from my local directory. 
+Click the `Upload` button once finished selecting the files.
+
+![Select Files](./assets/selected_files.png)
+
+The HTML file gives the structure of the site, while the assets add style and interactivity.
+
+There will be a progress bar for when the uploading is finished.
+![Uploading](./assets/uploading.png)
+
+### Access Control List
+After uploading, I made the files public using ACLs. Aside from the option earlier to “Block All Public Access” which allows or block public access to the bucket, S3 has this separate security feature: Access Control List that defines which files will be made accessible to the public.
+
+To do this, click the `aws-hostweb-project` bucket. On Objects tab, I selected the necessary files for my static website
+
+Under `Actions` button, select `Make public using ACL `
+![Make public using ACL](./assets/make_public_using_acls.png)
+Then click `Make Public`
+
+![Make public Button](./assets/make_public.png)
+
+Failing to do this step will eventually result to 403 forbidden error when trying to access the website after it is hosted. 403 means the server denies the access to the web page which in this case, failing to make the objects for public access.
+
+### Static Website Hosting
+To make the website available online, I enabled **static website hosting** in the bucket’s properties. 
+This setting is Disabled by Default.
+
+Click `Edit`
+![Disabled Static Website Hosting](./assets/static_hosting_edit.png)
+
+On the edit page, click Enable and set `Hosting Type` to `Host a Static Website`
+![Edit Static Website Hosting](./assets/enable_static_hosting.png)
+
+I set `portfolio_website.html` as the index document, saved the changes, and confirmed that the site was accessible through the bucket’s endpoint URL.  
+![Success Static Website Hosting](./assets/success_enable_static_hosting.png)
+
 
 ## 🔧 Additional Activities  
 While testing, I noticed the “My Projects” section was missing. I found that the JavaScript file path was wrong, so I updated the HTML to:  
