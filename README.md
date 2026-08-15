@@ -77,15 +77,38 @@ This setting is Disabled by Default.
 Click `Edit`
 ![Disabled Static Website Hosting](./assets/static_hosting_edit.png)
 
-On the edit page, click Enable and set `Hosting Type` to `Host a Static Website`
+On the Static Website Hosting setting, click Enable and set `Hosting Type` to `Host a Static Website`
 ![Edit Static Website Hosting](./assets/enable_static_hosting.png)
 
 I set `portfolio_website.html` as the index document, saved the changes, and confirmed that the site was accessible through the bucket’s endpoint URL.  
 ![Success Static Website Hosting](./assets/success_enable_static_hosting.png)
 
+Accessing the website on the browser:
+![Deployed Static Website Hosting](./assets/deployed_websit-1.png)
 
-## 🔧 Additional Activities  
-While testing, I noticed the “My Projects” section was missing. I found that the JavaScript file path was wrong, so I updated the HTML to:  
+
+## 🔧 Additional Activities
+
+### 1. Updating files inside the bucket
+While testing, I noticed the “My Projects” section was missing.
+![Missing Website Section](./assets/missing_section.png)
+
+I checked my local HTML, CSS and JS files and I found that the JavaScript file path was not properly reference in my HTML file as I recently changed the folder name into /assets, so I updated the HTML to:  
 
 ```html
 <script src="./assets/portfolio_js.js"></script>
+```
+To update an object inside a bucket, click on the "Upload" button and choose the updated file with the same key (name) as the existing object.
+![Uploading updated HTML file](./assets/updated_html_file.png)
+
+Confirm the upload. This will overwrite the existing object with the new content.
+I visited the website URL and welcomed with a 403 error. 
+![Error 403 of the Updated File](./assets/error.png)
+I learned that an updated file also needs to be "Make public using ACLs" again.
+
+After making the updated HTML file public using ACL, the missing section is now visible on the hosted site
+![Fixed missing section](./assets/visible_projects_section.png)
+
+### 2. Bucket Policies
+
+
