@@ -19,17 +19,27 @@ I started by creating an S3 bucket named `aws-hostweb-project`. Bucket names mus
 ![Bucket Name](./assets/bucket_name.png)
 
 ### Object Ownership  
-I enabled **ACLs** (Access Control Lists) to see how permissions work, even though AWS recommends turning them off. ACLs are rules that decide who can access files inside the bucket. Under Object Ownership, I kept the default setting “Bucket owner preferred” which means the bucket owner is the one who owns uploaded files.  
-
+I enabled **ACLs** (Access Control Lists) to see how permissions work, even though AWS recommends turning them off. ACLs are rules that decide who can access files inside the bucket.
 ![Enable ACL](./assets/enable_acl.png)
+
+Under Object Ownership, I kept the default setting “Bucket owner preferred” which means the bucket owner is the one who owns uploaded files.  
 
 ![Object owner](./assets/object_ownership.png)
 
 ### Disabling the “Block All Public Access”  
-Next, I turned off the “Block all public access” option so the website could be viewed by anyone. This setting normally protects the bucket from unwanted access, but for hosting a public site, it needs to be disabled. I also enabled bucket versioning to keep track of file changes and left the default encryption on so files are automatically protected. After these settings, the bucket was created successfully.  
+Next, I turned off the “Block all public access” option so the website could be viewed by anyone. This setting normally protects the bucket from unwanted access, but for hosting a public site, it needs to be disabled. 
 
-![Object owner](./assets/disbale_block_all_public_access.png)
+![Enable Public Access](./assets/disbale_block_all_public_access.png)
 
+I also enabled bucket versioning to keep track of file changes and left the default encryption on so files are protected. 
+![Bucket Versioning](./assets/bucket_versioning.png)
+
+AWS automatically encrypts the objects inside the bucket so whenever someone tries an unauthorize access, they cannot actually view the objects.
+![Default Encryption](./assets/default_encryption.png)
+
+After these settings, the bucket was created successfully and can be seen on the Buckets list.
+![Success Bucket Creation](./assets/created_bucket_success.png)
+![Bucket List](./assets/buckets_list.png)
 ### Uploading Files / Folders  
 Once the bucket was ready, I uploaded my website files: `portfolio_website.html` and the assets folder containing CSS, JS, and images. The HTML file gives the structure of the site, while the assets add style and interactivity. After uploading, I made the files public using ACLs to avoid 403 Forbidden errors.  
 
